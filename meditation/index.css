@@ -25,7 +25,8 @@ body
 
 #message
 {
-    transition: opacity 4s ease-in-out;
+    transition: opacity 2s ease-in-out;
+    font-size: x-large;
 }
 
 @keyframes thinking
@@ -102,5 +103,21 @@ body
     {
         border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
         background-image: radial-gradient(rgba(218, 66, 245, 0.3), rgba(255, 255, 255, 0.2));
+    }
+}
+
+@keyframes breathing
+{
+    0%
+    {
+        opacity: 1;
+    }
+    50%
+    {
+        opacity: 0;
+    }
+    100%
+    {
+        opacity: 1;
     }
 }
