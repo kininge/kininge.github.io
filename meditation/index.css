@@ -34,7 +34,7 @@ body
     0%
     {
         border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-        background-image: radial-gradient(rgba(66, 135, 245, 0.4), rgba(255, 255, 255, 0.2));
+        background-image: radial-gradient(rgba(255, 255, 255, 0.2), rgba(66, 135, 245, 0.4));
     }
 
     10%
@@ -44,7 +44,7 @@ body
 
     15%
     {
-        background-image: radial-gradient(rgba(66, 245, 230, 0.2), rgba(255, 255, 255, 0.2));
+        background-image: radial-gradient(rgba(255, 255, 255, 0.2), rgba(66, 245, 230, 0.2), );
     }
      
     20%
@@ -55,7 +55,7 @@ body
     30%
     {
         border-radius: 35% 65% 49% 51% / 19% 45% 55% 81%;
-        background-image: radial-gradient(rgba(66, 245, 90, 0.2), rgba(255, 255, 255, 0.2));
+        background-image: radial-gradient(rgba(255, 255, 255, 0.2), rgba(66, 245, 90, 0.2));
     }
 
     40%
@@ -65,7 +65,7 @@ body
 
     45%
     {
-        background-image: radial-gradient(rgba(215, 245, 66, 0.3), rgba(255, 255, 255, 0.2));
+        background-image: radial-gradient(rgba(rgba(255, 255, 255, 0.2), 215, 245, 66, 0.3) );
     }
 
     50%
@@ -76,7 +76,7 @@ body
     60%
     {
         border-radius: 57% 43% 35% 65% / 42% 41% 59% 58%;
-        background-image: radial-gradient(rgba(245, 153, 66, 0.3), rgba(255, 255, 255, 0.2));
+        background-image: radial-gradient(rgba(255, 255, 255, 0.2), rgba(245, 153, 66, 0.3));
     }
 
     70%
@@ -86,7 +86,7 @@ body
 
     75%
     {
-        background-image: radial-gradient(rgba(245, 87, 66, 0.3), rgba(255, 255, 255, 0.2));
+        background-image: radial-gradient(rgba(255, 255, 255, 0.2), rgba(245, 87, 66, 0.3));
     }
 
     80%
@@ -102,7 +102,7 @@ body
     100%
     {
         border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-        background-image: radial-gradient(rgba(218, 66, 245, 0.3), rgba(255, 255, 255, 0.2));
+        background-image: radial-gradient(rgba(255, 255, 255, 0.2), rgba(218, 66, 245, 0.3));
     }
 }
 
