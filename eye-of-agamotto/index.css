@@ -118,14 +118,26 @@ body
     transform-origin: bottom center;
 }
 
-#message
+#message-1
 {
     position: absolute;
     left: 50%;
-    top: 77%;
+    top: 74%;
     transform: translate(-50%, -50%);
 
     font-size: 14px;
+    font-weight: bolder;
+    color: #bebebe;
+}
+
+#message-2
+{
+    position: absolute;
+    left: 50%;
+    top: 81%;
+    transform: translate(-50%, -50%);
+
+    font-size: 12px;
     font-weight: bolder;
     color: #bebebe;
 }

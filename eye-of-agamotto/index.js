@@ -29,10 +29,10 @@ var today;                                                          // variable 
 var hourHand;                                                       // hour hand in clock
 var minuteHand;                                                     // minute hand in clock
 var secondHand;                                                     // second hand in clock
-var message; 
+var message_1; 
+var message_2;
 var IPAddress;                                                      // variable to store user's  IP address
-var location;                                                       // variable to store user's location
-var httpClient;                                                     // date to print in clock
+var location;                                                       // variable to store user's location                                                    // date to print in clock
 
 
 
@@ -40,40 +40,14 @@ document.addEventListener                                           // add event
 (
     "DOMContentLoaded", () =>                                       // wait until DOM get load into browser
     {
-        httpClient= new XMLHttpRequest();                           // create objet to handle http request
-
         hourHand= document.getElementById('hourHand');              // get hour hand element from DOM
         minuteHand= document.getElementById('minuteHand');          // get minute hand element from DOM
         secondHand= document.getElementById('secondHand');          // get second hand element from DOM
-        message= document.getElementById('message');                // get message element from DOM
+        message_1= document.getElementById('message-1');            // get message-1 element from DOM
+        message_2= document.getElementById('message-2');            // get message-2 element from DOM
 
         this.setPosition();                                         // set initial positions of hour, minute and second hand with message
-
-
-        // var xhttp = new XMLHttpRequest();
-        // xhttp.onreadystatechange = function() 
-        // {
-        //     if (this.readyState == 4 && this.status == 200) 
-        //     {
-        //         console.log(this.responseText);
-        //     }
-        // };
-        
-        // xhttp.open("GET", "https://api.ipify.org?format=json", true);
-        // //xhttp.open("GET", "https://ipinfo.io/103.200.104.112/geo", true);
-        // xhttp.send();
-
-        // xhttp.onreadystatechange = function() 
-        // {
-        //     if (this.readyState == 4 && this.status == 200) 
-        //     {
-        //         console.log(this.responseText);
-        //     }
-        // };
-        
-        // //xhttp.open("GET", "https://api.ipify.org?format=json", true);
-        // xhttp.open("GET", "https://ipinfo.io/103.200.104.112/geo", true);
-        // xhttp.send();
+        this.findLocation();                                        // set user location    
 
         setInterval                                                 // created repeted interval of code trigger
         (
@@ -87,6 +61,29 @@ document.addEventListener                                           // add event
 
 function findLocation()
 {
+
+    fetch("https://api.ipify.org?format=json").
+    then(function(response) 
+    {
+        response.json()
+        .then(function(text) 
+        {
+          this.IPAddress= text.ip;
+
+          fetch("https://ipinfo.io/"+this.IPAddress+"/geo").
+            then(function(response) 
+            {
+                response.json()
+                .then(function(text) 
+                {
+                    this.message_2.innerHTML= text.city+' '+text.region;
+                });
+            });
+
+        });
+    });
+
+    
 
 }
 
@@ -103,7 +100,7 @@ function setPosition()                                                          
     let second= today.getSeconds();                                                         // get second from date and time
     let todaysDate= date+' '+months[month].substring(0, 3)+' '+year;                        // create complete printing date
 
-    message.innerHTML= todaysDate;                                                          // Add created date at message element's innerHTML
+    message_1.innerHTML= todaysDate;                                                        // Add created date at message-1 element's innerHTML
 
     hourHand.style.transform = "translate(-50%, -21%) rotate("
     +(Number(hour* 30)+Number(Math.floor(minute/60*30)))+"deg)";                            // set hour hand position
