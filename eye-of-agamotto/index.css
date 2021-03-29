@@ -1,0 +1,131 @@
+
+body
+{
+    margin: 0;
+    background: #000000;
+
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.clock
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#animated-dial-1
+{
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+
+    /* background: linear-gradient(60deg, #e55d87, #5fc3e4); */
+    background: linear-gradient(60deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+#transparant-dial
+{
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+    
+    background-image: radial-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.3) 100%);
+}
+
+#animated-dial-2
+{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    z-index: 3;
+    
+    background: linear-gradient(60deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+#center-nob
+{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    z-index: 8;
+
+    background-color: #000000;
+}
+
+#hourHand
+{
+    position: absolute;
+    width: 6px;
+    height: 80px;
+    border-radius: 3px;
+    background-color: #000000;
+    z-index: 5;
+
+    left: 50%;
+    top: 25%;
+    transform: translate(-50%, -21%) rotate(0deg);
+    transform-origin: bottom center;
+}
+
+#minuteHand
+{
+    position: absolute;
+    width: 4px;
+    height: 100px;
+    border-radius: 2px;
+    background-color: #000000;
+    z-index: 6;
+
+    left: 50%;
+    top: 25%;
+    transform: translate(-50%, -37%) rotate(0deg);
+    transform-origin: bottom center;
+}
+
+#secondHand
+{
+    position: absolute;
+    width: 2px;
+    height: 115px;
+    border-radius: 1px;
+    background-color: #000000;
+    z-index: 7;
+
+    left: 50%;
+    top: 25%;
+    transform: translate(-50%, -45%) rotate(0deg);
+    transform-origin: bottom center;
+}
+
+#message
+{
+    position: absolute;
+    left: 50%;
+    top: 77%;
+    transform: translate(-50%, -50%);
+
+    font-size: 14px;
+    font-weight: bolder;
+    color: #bebebe;
+}
