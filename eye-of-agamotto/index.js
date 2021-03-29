@@ -69,7 +69,8 @@ function setPosition()                                                          
 
     message.innerHTML= todaysDate;                                                          // Add created date at message element's innerHTML
 
-    hourHand.style.transform = "translate(-50%, -21%) rotate("+(hour* 30)+"deg)";           // set hour hand position
+    hourHand.style.transform = "translate(-50%, -21%) rotate("
+    +(hour* 30)+(Math.floor(minute/60*30))+"deg)";                                          // set hour hand position
     minuteHand.style.transform = "translate(-50%, -37%) rotate("+(minute* 6)+"deg)";        // set minute hand position
     secondHand.style.transform = "translate(-50%, -45%) rotate("+(second* 6)+"deg)";        // set second hand position
 }
