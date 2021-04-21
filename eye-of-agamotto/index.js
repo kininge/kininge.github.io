@@ -98,7 +98,7 @@ document.addEventListener                                           // add event
 /* Run APIs */
 function getTimeZone()                                              // get list of all timezones in world
 {
-    fetch("http://api.timezonedb.com/v2.1/list-time-zone?"
+    fetch("https://api.timezonedb.com/v2.1/list-time-zone?"
     +"key=5F9QRBP5K13E&format=json").                               // URL to get list of timezones in json format
     then(function(response) 
     {
