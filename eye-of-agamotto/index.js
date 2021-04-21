@@ -261,8 +261,8 @@ function setClockAsPerDatetime(datetime)                            // set hour,
 
     if( this.isLocalTime=== false)                                  // if local date and time is setting
     {
-        message_1.innerHTML= day;                                   // add day of week at message-1 element's innerHTML
-        message_2.innerHTML= todaysDate;                            // add created date at message-2 element's innerHTML
+        message_1.innerHTML= todaysDate;                            // add created date at message-1 element's innerHTML
+        message_2.innerHTML= day;                                   // add day of week at message-2 element's innerHTML
     }
     else
     {

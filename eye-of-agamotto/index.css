@@ -152,7 +152,7 @@ body
 /* timezone-dropdown */
 #timezone-dropdown-container
 {
-    width: 25%;
+    width: 30%;
     position: absolute;
     z-index: 10;
     top: 15%;
@@ -163,7 +163,7 @@ body
 
 #selected-timezone-container
 {
-    height: 2em;
+    padding: 0.2rem;
     border-radius: 0.3rem;
     background-image: linear-gradient(60deg, #e73c7e, #23a6d5);
 }
@@ -183,7 +183,7 @@ body
 #timezone-container
 {
     position: absolute;
-    background: rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.7);
     top: 2.5em;
     transform: translate(-2.5%, 0);
     width: 100%;
@@ -218,7 +218,7 @@ body
     padding: 0.3rem 0.6rem 0.8rem;
     padding: 0.3rem 1rem;
     border-radius: 0.3rem;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: #444;
     height: 2em;
     margin-bottom: 1em;
     color: #ffffff;
@@ -235,6 +235,7 @@ body
     border: none;
     outline: none;
     margin-left: 1em;
+    color: #fff;
     background-color: transparent;
 }
 
@@ -253,30 +254,21 @@ body
    color: #ffffff;
 }
 
-#search-timezone:hover::placeholder
+.timezone-option
 {
-    color: #000000;
-}
-  
-#search-timezone:hover:-ms-input-placeholder
-{ 
-    color: #000000;
-}
-  
-#search-timezone:hover::-ms-input-placeholder
-{ 
-   color: #000000;
+    overflow-x: hidden;
 }
 
-#searchbox-container:hover
+.timezone-option:hover
 {
-    background-color: rgba(255, 255, 255, 0.6);
-    color: #000000;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #000;
+    font-weight: 600;
 }
 
 /* timezone-dropdown */
 
-@media only screen and (max-width: 767px) 
+@media only screen and (max-width: 829px) 
 {
     .clock
     {
@@ -338,5 +330,20 @@ body
     #message-2
     {
         font-size: 8px;
+    }
+
+    #timezone-dropdown-container
+    {
+        width: 55%;
+        top: 5%;
+    }
+}
+
+@media only screen and (max-width: 529px)
+{
+    #timezone-dropdown-container
+    {
+        width: 75%;
+        top: 20%;
     }
 }
