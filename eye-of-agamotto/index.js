@@ -246,6 +246,7 @@ function localDatetime()                                            // get and s
 
 function setClockAsPerDatetime(datetime)                            // set hour, minute and second hand potion and set message
 {
+
     let date= datetime.getUTCDate();                                // get date from date from date and time
     let month= datetime.getUTCMonth();                              // get month from date and time
     let year= datetime.getUTCFullYear();                            // get year from date and time
@@ -253,12 +254,12 @@ function setClockAsPerDatetime(datetime)                            // set hour,
     hour= hour> 11? hour- 12: hour;                                 // convert 24 based hour to 12 based hour
     let minute= datetime.getMinutes();                              // get minute from date and time
     let second= datetime.getSeconds();                              // get second from date and time
-    let day= days[datetime.getDay()];                               // get day of week from date and time
+    let day= days[datetime.getDay()- 1];                            // get day of week from date and time
     let todaysDate= 
     date+' '+months[month].substring(0, 3)+' '+year;                // create complete printing date
 
 
-    if( this.isLocalTime=== false)                                          // if local date and time is setting
+    if( this.isLocalTime=== false)                                  // if local date and time is setting
     {
         message_1.innerHTML= day;                                   // add day of week at message-1 element's innerHTML
         message_2.innerHTML= todaysDate;                            // add created date at message-2 element's innerHTML
