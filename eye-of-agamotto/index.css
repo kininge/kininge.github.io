@@ -180,7 +180,7 @@ body
     color: #0a0a0a;
 }
 
-#timezone-option-container
+#timezone-container
 {
     position: absolute;
     background: rgba(255, 255, 255, 0.1);
@@ -189,6 +189,12 @@ body
     width: 100%;
     border-radius: 0.3rem;
     padding: 0.3rem;
+}
+
+#timezone-option-container
+{
+    max-height: 12em;
+    overflow-y: scroll;
 }
 
 .timezone-option

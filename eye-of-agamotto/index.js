@@ -25,6 +25,9 @@ var days=                                                           // master da
     'Sunday'
 ];
 
+var isLocalTime= true;                                              // which time is visibles
+var selectedTimeZone;                                               // timezone which select by user
+
 var today;                                                          // variable to store date and time                                        
 var hourHand;                                                       // hour hand in clock
 var minuteHand;                                                     // minute hand in clock
@@ -34,63 +37,78 @@ var message_2;                                                      // element 2
 var IPAddress;                                                      // variable to store user's  IP address
 var location;                                                       // variable to store user's location  
 
-var timezoneContainer;                                              // element which container whole timezone options
+var timezoneOverallContainer;                                       // element which containe slected timezone
+var selectedTimezone;                                               // element which show selected timezone
+var timezoneContainer;                                              // element which container  timezone search and timezone options
+var timezoneOptionContainer;                                        // element containes all timezone options
+var searchbox;                                                      // element which contain search input element
 var options;                                                        // element which container timezone options
+var option;                                                         // element which selcted option by user
+
+var timezoneOptions= [];                                            // store list of all timezones
 
 
-
+/* Load when DOM load */
 document.addEventListener                                           // add event listerner
 (
     "DOMContentLoaded", () =>                                       // wait until DOM get load into browser
     {
-        hourHand= document.getElementById('hourHand');              // get hour hand element from DOM
-        minuteHand= document.getElementById('minuteHand');          // get minute hand element from DOM
-        secondHand= document.getElementById('secondHand');          // get second hand element from DOM
-        message_1= document.getElementById('message-1');            // get message-1 element from DOM
-        message_2= document.getElementById('message-2');            // get message-2 element from DOM
+        this.hourHand= document.getElementById('hourHand');         // get hour hand element from DOM
+        this.minuteHand= document.getElementById('minuteHand');     // get minute hand element from DOM
+        this.secondHand= document.getElementById('secondHand');     // get second hand element from DOM
+        this.message_1= document.getElementById('message-1');       // get message-1 element from DOM
+        this.message_2= document.getElementById('message-2');       // get message-2 element from DOM
         
-        timezoneContainer= 
+        this.timezoneOverallContainer= 
         document.getElementById('selected-timezone-container');     // get element to dropdown container
-        timezoneContainer.addEventListener
+        this.timezoneOverallContainer.addEventListener
         ("click", openOrCloseTimezoneOptions);                      // add event listener to opne or clock options
 
-        options= 
-        document.getElementsByClassName('timezone-option');         // list of all timezone option elements
-        Array.from(options).forEach
-        (
-            function(option) 
-            {
-                option.addEventListener
-                (
-                    'click', 
-                    handleSelectedOption(option)
-                );
-            }
-        );
+        this.timezoneContainer=
+        document.getElementById('timezone-container');              // get element to containe timezone options and search
+        this.searchbox=
+        document.getElementById('search-timezone');                 // get element which take user search timezone
 
-        
+        this.getTimeZone();                                         // get timezone and add options for select
 
         this.localDatetime();                                       // set initial positions of hour, minute and second hand with message
         this.findLocation();                                        // set user location    
+
 
         setInterval                                                 // created repeted interval of code trigger
         (
             ()=>
             {
-                this.localDatetime();                               // set new positions of hour, minute and second hand with message
+                if(this.isLocalTime)
+                {
+                    this.localDatetime();                           // set new positions of hour, minute and second hand with message
+                }
+                else
+                {
+                    this.selectedDatetime(this.selectedTimeZone);   // set new user selected positions of hour, minute and second hand with message
+                }
+                
             }, 1000                                                 // wait for 1 second
         );
+        
     }
 );
 
-function selectedDatetime(date, timezoneInString)                   // get and set selected timezone's date and time
+
+/* Run APIs */
+function getTimeZone()                                              // get list of all timezones in world
 {
-    let datetimeBasedOnTimezoneInString= 
-    date.toLocaleString("en-US", {timeZone: timezoneInString});     // get selected timezone's datetime in string
-    let selectedTimeZoneDatetime= 
-    new Date(datetimeBasedOnTimezoneInString);                      // get selected datetime from string  
-    
-    this.setClockAsPerDatetime(selectedTimeZoneDatetime, false)     // set selected date, time and day in clock
+    fetch("http://api.timezonedb.com/v2.1/list-time-zone?"
+    +"key=5F9QRBP5K13E&format=json").                               // URL to get list of timezones in json format
+    then(function(response) 
+    {
+        response.json()
+        .then(function(text) 
+        {
+            this.timezoneOptions= text.zones;                       // store all timezone options
+            this.addOptionsToSelect('');                            // send response to add options
+        });
+    });
 }
 
 function findLocation()                                             // get and set user's IP address and location based on IP address                             
@@ -119,13 +137,114 @@ function findLocation()                                             // get and s
     });
 }
 
+
+/* Timezone dropdown */
+function addOptionsToSelect(searchOption)                           // add timezone options
+{
+    this.timezoneOptionContainer= document.createElement('DIV');    // created div element
+    this.timezoneOptionContainer.id= 'timezone-option-container';   // provide id to that element
+    this.timezoneContainer.append(this.timezoneOptionContainer);    // added element to DOM
+
+    this.timezoneOptions.forEach
+    (
+        timezone=>
+        {
+            let timezoneAndCountry= 
+            timezone.zoneName+' '+timezone.countryName;             // appending timezone name
+
+            if
+            (
+                (searchOption.length== 0) ||
+                (timezoneAndCountry.toLowerCase()
+                .includes(searchOption))
+            )
+            {
+                let element= document.createElement('DIV');          // created new div element
+                element.classList.add('timezone-option');            // add timezonw-option element 
+                element.innerHTML= timezoneAndCountry                // add time zone data in innerHTML
+                this.timezoneOptionContainer.append(element);        // add element to container
+            }
+            
+        }
+    );
+
+    this.observeTimezoneSelect();
+}
+
+function observeTimezoneSelect()                                    // select timezone and apply
+{
+    this.selectedTimezone= 
+    document.getElementById('selected-timezone');                   // get element which show selected option
+
+    this.options= 
+    document.getElementsByClassName('timezone-option');             // list of all timezone option elements
+    Array.from(options).forEach
+    (
+        function(option) 
+        {
+            option.addEventListener('click', event=>
+            {
+                this.option= event.target;                          // get select option
+                selectedTimezone.innerHTML= 
+                this.option.innerHTML;                              // assign selected option for display
+
+                this.openOrCloseTimezoneOptions();
+                this.isLocalTime= false;                            // not using local datetime
+                this.selectedTimeZone= 
+                this.option.innerHTML.split(' ')[0];                // store selected timezone
+
+                this.searchbox.value= '';                           // make searchbox empty
+                this.searchTimezone();                              // add fresh options
+            });
+        }
+    );
+}
+
+function openOrCloseTimezoneOptions()                               // close timezone options
+{
+    let optionContainer= 
+    document.getElementById('timezone-container');                  // get timezone element
+
+    if(optionContainer.classList.length> 0)
+    {
+        optionContainer.classList.remove('hidden');                 // hide element
+    }
+    else
+    {
+        optionContainer.classList.add('hidden');                    // make element visible
+    }
+}
+
+function searchTimezone()                                           // search timezone
+{
+    let search= this.searchbox.value.toLowerCase();                 // get user given search data
+
+    this.timezoneContainer
+    .removeChild(this.timezoneOptionContainer);                     // remove all option elements from DOM
+    this.addOptionsToSelect(search);                                // add timezone option elements based on search
+}
+
+
+/* Change clock data */
+function selectedDatetime(timezoneInString)                         // get and set selected timezone's date and time
+{
+    let date= new Date();
+
+    let datetimeBasedOnTimezoneInString= 
+    date.toLocaleString("en-US", {timeZone: timezoneInString});     // get selected timezone's datetime in string
+    let selectedTimeZoneDatetime= 
+    new Date(datetimeBasedOnTimezoneInString);                      // get selected datetime from string  
+    
+    this.setClockAsPerDatetime(selectedTimeZoneDatetime, false)     // set selected date, time and day in clock
+}
+
 function localDatetime()                                            // get and set local date and time                                            
 {
     today= new Date();                                              // get local date and time
-    this.setClockAsPerDatetime(today, true);                        // set local date, time and message
+    this.setClockAsPerDatetime(today);                              // set local date, time and message
 }
 
-function setClockAsPerDatetime(datetime, isItLocal)                 // set hour, minute and second hand potion and set message
+function setClockAsPerDatetime(datetime)                            // set hour, minute and second hand potion and set message
 {
     let date= datetime.getUTCDate();                                // get date from date from date and time
     let month= datetime.getUTCMonth();                              // get month from date and time
@@ -139,7 +258,7 @@ function setClockAsPerDatetime(datetime, isItLocal)                 // set hour,
     date+' '+months[month].substring(0, 3)+' '+year;                // create complete printing date
 
 
-    if(isItLocal=== false)                                          // if local date and time is setting
+    if( this.isLocalTime=== false)                                          // if local date and time is setting
     {
         message_1.innerHTML= day;                                   // add day of week at message-1 element's innerHTML
         message_2.innerHTML= todaysDate;                            // add created date at message-2 element's innerHTML
@@ -156,23 +275,4 @@ function setClockAsPerDatetime(datetime, isItLocal)                 // set hour,
     "translate(-50%, -37%) rotate("+(minute* 6)+"deg)";             // set minute hand position
     secondHand.style.transform = 
     "translate(-50%, -45%) rotate("+(second* 6)+"deg)";             // set second hand position
-}
-
-function openOrCloseTimezoneOptions()
-{
-    let optionContainer= document.getElementById('timezone-option-container');
-
-    if(optionContainer.classList.length> 0)
-    {
-        optionContainer.classList.remove('hidden');
-    }
-    else
-    {
-        optionContainer.classList.add('hidden');
-    }
-}
-
-function handleSelectedOption(option)
-{
-    console.log(option);
 }
