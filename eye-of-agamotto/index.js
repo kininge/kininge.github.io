@@ -150,8 +150,7 @@ function addOptionsToSelect(searchOption)                           // add timez
         timezone=>
         {
             let timezoneAndCountry= 
-            timezone.zoneName+' '+timezone.countryName;             // appending timezone name
-
+            timezone.zoneName+' '+timezone.countryName;             // appending timezone names country time
             if
             (
                 (searchOption.length== 0) ||
