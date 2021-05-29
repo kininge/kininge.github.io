@@ -12,6 +12,7 @@
 body
 {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     margin: 10vh 0 0 0;
     background-color: var(--primary-background-color);
@@ -188,7 +189,7 @@ body
     #family-details
     { 
         width: 75%;
-        padding: 0.8vw;
+        padding: 0.8vw 0.8vw 0.8vw 3vw;
     }
 /* Family Details */
 
@@ -227,3 +228,145 @@ body
     margin: 0;
     margin-bottom: 2em;
 }
+
+
+@media only screen and (max-width: 1379px)
+{
+    
+    #profile-page
+    {
+        width: 90vw;
+    }
+}
+
+@media only screen and (max-width: 1249px)
+{
+    body
+    {
+        margin: 0;
+    }
+    
+    #profile-page
+    {
+        width: 100vw;
+        margin: 0;
+    }
+}
+
+@media only screen and (max-width: 1999px)
+{
+    #personal-details
+    {
+        width: 30%;
+    }
+
+    #family-details
+    { 
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 949px)
+{
+    #personal-details
+    {
+        width: 35%;
+    }
+
+    #family-details
+    { 
+        width: 65%;
+    }
+
+    .size-2
+    {
+        font-size: 1em;
+    }
+
+    .key-family
+    {
+        min-width: 11em;
+    }
+}
+
+@media only screen and (max-width: 949px)
+{
+    #profile-page
+    {
+        display: block;
+    }
+
+    #personal-details
+    {
+        box-sizing: border-box;
+        width: 100%;
+        margin-bottom: 1em;
+    }
+
+    #family-details
+    { 
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    .key-value-row
+    {
+        height: auto;
+    }
+
+    .key
+    {
+        min-width: 10em;
+    }
+
+    #profile-owner-name
+    {
+        font-size: 2em !important;
+    }
+
+    .size-2
+    {
+        font-size: 1.2em;
+    }
+
+    .size-3
+    {
+        font-size: 1.5em;
+    }
+
+    .key-family
+    {
+        min-width: 11em;
+    }
+}
+
+@media only screen and (max-width: 579px)
+{
+   
+
+    .key
+    {
+        min-width: 10em;
+    }
+
+    #profile-owner-name
+    {
+        font-size: 1.2em !important;
+    }
+
+    .size-2
+    {
+        font-size: 0.9em;
+    }
+
+    .size-3
+    {
+        font-size: 1em;
+    }
+
+    .key-family
+    {
+        min-width: 11em;
+    }
+}
+
