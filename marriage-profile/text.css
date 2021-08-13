@@ -1,0 +1,13 @@
+h1 {
+  font-size: 1em;
+  margin: none;
+}
+
+h1::grammar-error {
+  color: #341324;
+}
+
+h1 .test2 {
+  color: #fff;
+}
+/*# sourceMappingURL=text.css.map */
