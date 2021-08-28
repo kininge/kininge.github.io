@@ -1,0 +1,391 @@
+$primary-color: #000;
+$secondary-color: #fff;
+$ternary-color: #888;
+$primary-filter: brightness(100) invert(0);
+$secondary-filter: brightness(0) invert(1);
+
+body {
+  font-family: "Roboto";
+  display: block;
+  margin: 8px;
+}
+
+.remove {
+  display: none !important;
+}
+
+#header-container {
+  display: flex;
+  align-items: center;
+  background-color: $primary-color;
+  padding: 4rem 2rem;
+  border-radius: 0.5rem;
+
+  #life-passed-container {
+    color: $secondary-color;
+    display: flex;
+    align-items: center;
+
+    #life-passed-percentage {
+      font-size: 5vw;
+      margin-right: 2rem;
+    }
+    #life-quote-container {
+      margin-top: 2vw;
+      color: #888;
+
+      span {
+        display: block;
+        font-size: 1vw;
+      }
+      small {
+        font-size: 0.8vw;
+        float: right;
+      }
+    }
+  }
+
+  #birth-date-selection-container {
+    position: absolute;
+    right: 4rem;
+    #birth-date-selection-label {
+      color: $secondary-color;
+      position: absolute;
+      right: 0;
+      width: 15.4rem;
+      bottom: 0.5rem;
+    }
+
+    .date-picker-container {
+      position: absolute;
+
+      .date-picker-display {
+        box-sizing: border-box;
+        position: absolute;
+        right: 2rem;
+        background-color: #fff;
+        min-width: 15rem;
+        height: 1.6rem;
+        border-radius: 0.5vw;
+        font-size: 0.9rem;
+        font-weight: bold;
+        color: $primary-color;
+        padding: 0.4rem 0.6rem;
+      }
+      .date-picker-toggle-button {
+        width: 1.5rem;
+        cursor: pointer;
+        filter: $secondary-filter;
+      }
+      .date-picker-input {
+        position: absolute;
+        right: 0;
+        padding-bottom: 0.5rem;
+        opacity: 0;
+      }
+    }
+  }
+}
+
+#memento-mori-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+
+  .half-year {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1vh;
+
+    .week {
+      display: block;
+      width: 1.47vw;
+      height: 1.47vw;
+      margin: 0.1rem;
+      border: 1px solid $primary-color;
+      border-radius: 0.4vw;
+    }
+
+    .passed-week {
+      background-color: $primary-color;
+    }
+
+    .year-count-container {
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.47vw;
+      height: 1.47vw;
+      margin: 0.1rem;
+      font-size: 0.8vw;
+    }
+  }
+
+  .year-gap {
+    width: 100vw;
+    height: 1.5vw;
+  }
+}
+
+#footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $primary-color;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+
+  .quote {
+    color: $ternary-color;
+  }
+
+  .author {
+    color: $secondary-color;
+    text-transform: uppercase;
+  }
+}
+
+@media only screen and (max-width: 1366px) {
+  #memento-mori-container {
+    .half-year {
+      margin-bottom: 0.3vh;
+
+      .week {
+        display: block;
+        width: 1.45vw;
+        height: 1.45vw;
+      }
+
+      .year-count-container {
+        width: 1.45vw;
+        height: 1.45vw;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1115px) {
+  #memento-mori-container {
+    .half-year {
+      margin-bottom: 0.5vh;
+      .week {
+        display: block;
+        width: 1.4vw;
+        height: 1.4vw;
+        margin: 0.08rem;
+        border-radius: 0.2rem;
+      }
+
+      .year-count-container {
+        width: 1.4vw;
+        height: 1.4vw;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1025px) {
+  #memento-mori-container {
+    .half-year {
+      margin-bottom: 0.3vh;
+      .week {
+        margin: 0.07rem;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 825px) {
+  #memento-mori-container {
+    .half-year {
+      .week {
+        display: block;
+        width: 1.28vw;
+        height: 1.28vw;
+      }
+
+      .year-count-container {
+        width: 1.28vw;
+        height: 1.28vw;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 815px) {
+  #header-container {
+    padding: 4rem 1.5rem;
+    #life-passed-container {
+      #life-passed-percentage {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+
+  #memento-mori-container {
+    .half-year {
+      margin-bottom: 0.08rem;
+      .week {
+        display: block;
+        width: 1.26vw;
+        height: 1.26vw;
+        margin: 0.07rem;
+        border-radius: 0.2rem;
+      }
+
+      .year-count-container {
+        width: 1.26vw;
+        height: 1.26vw;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #header-container {
+    #life-passed-container {
+      #life-quote-container {
+        display: none;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 740px) {
+  #memento-mori-container {
+    .half-year {
+      .week {
+        margin: 0.06rem;
+      }
+
+      .year-count-container {
+        font-size: 1vw;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  #memento-mori-container {
+    .half-year {
+      .week {
+        display: block;
+        width: 1.2vw;
+        height: 1.2vw;
+        border-radius: 0.15rem;
+      }
+
+      .year-count-container {
+        width: 1.2vw;
+        height: 1.2vw;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 655px) {
+  #memento-mori-container {
+    .half-year {
+      .week {
+        margin: 0.06rem;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 570px) {
+  #memento-mori-container {
+    margin-top: 0.8rem;
+    .half-year {
+      .week {
+        margin: 0.04rem;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 540px) {
+  #memento-mori-container {
+    .half-year {
+      .week {
+        width: 2.5vw;
+        height: 2.5vw;
+        margin: 0.1rem;
+        border-radius: 0.2rem;
+      }
+
+      .year-count-container {
+        width: 2.5vw;
+        height: 2.5vw;
+        font-size: 2vw;
+      }
+    }
+
+    .year-gap {
+      height: 3vw;
+    }
+  }
+}
+
+@media only screen and (max-width: 415px) {
+  #header-container {
+    #life-passed-container {
+      display: none;
+    }
+    #birth-date-selection-container {
+      right: 6rem;
+    }
+  }
+
+  #memento-mori-container {
+    .half-year {
+      .week {
+        width: 2vw;
+        height: 2vw;
+        border-radius: 0.15rem;
+      }
+
+      .year-count-container {
+        width: 2vw;
+        height: 2vw;
+        font-size: 2vw;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  #header-container {
+    #birth-date-selection-container {
+      right: 4.5rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  #header-container {
+    #birth-date-selection-container {
+      right: 4rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  #header-container {
+    #birth-date-selection-container {
+      right: 2.8rem;
+    }
+  }
+
+  #memento-mori-container {
+    .half-year {
+      .week {
+        margin: 0.08rem;
+        border-radius: 0.12rem;
+      }
+    }
+  }
+}
