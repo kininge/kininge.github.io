@@ -8,7 +8,7 @@ var profileUserEducationValue = "Bachelor of Engineering (Mechanical)"; // profi
 
 var profileUserWorkElement; // profile user work comes
 var profileUserWorkElementId = "profile-owner-work"; // profile user work element id
-var profileUserWorkValue = "Infostretch.Pvt.Ltd (9 LPA)"; // profile user work value
+var profileUserWorkValue = "ICICI Securities (22 LPA)"; // profile user work value
 
 var profileUserMobilElement; // profile user mobile comes
 var profileUserMobilElementId = "profile-owner-mobile"; // profile user mobile element id
@@ -124,7 +124,6 @@ document.addEventListener(
       this.profileUserBloodGroupElement = document.getElementById(
         this.profileUserBloodGroupElementId
       ); // find profile user blood group element
-      console.log(this.profileUserBloodGroupElement);
       this.keys =
         this.profileUserBloodGroupElement.getElementsByClassName("key"); // get elements of class key
       this.keys[0].innerHTML = this.profileUserBloodGroupKey; // assign key value to 1st element we found
