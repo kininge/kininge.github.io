@@ -1,0 +1,59 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="script.js"></script>
+		<link rel="stylesheet" href="style.css" />
+		<!-- Google font : Suse -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap"
+			rel="stylesheet"
+		/>
+		<!-- Google font : dancing script -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap"
+			rel="stylesheet"
+		/>
+		<title>Weather AAPI</title>
+	</head>
+	<body>
+		<!-- title -->
+		<h1 class="title-text secondary-text">Weather</h1>
+
+		<!-- search box -->
+		<form
+			id="search-from"
+			onsubmit="handleSeach(event)"
+			class="search-container"
+		>
+			<span class="search-bar-container">
+				<input
+					id="place-search"
+					type="text"
+					class="search-input-box"
+					placeholder="you can search more places here!"
+				/>
+				<button type="submit" class="search-submit-button">
+					<img
+						src="./assets/search.svg"
+						class="search-image"
+						alt="search-image"
+					/>
+				</button>
+			</span>
+		</form>
+
+		<!-- resopnse -->
+		<div id="response-container"></div>
+
+		<!-- weather forcast -->
+		<div id="weather-forecast-container"></div>
+	</body>
+</html>
