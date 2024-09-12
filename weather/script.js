@@ -118,15 +118,11 @@ function resetSearchResult(event) {
 		}
 
 		// remove all forcast
-		const forecastContainerElements = document.getElementById(
-			"weather-forecast-container"
+		const weatherForecastBoxElement = document.querySelector(
+			"weather-forecast-box"
 		);
-		if (forecastContainerElements) {
-			while (forecastContainerElements.firstChild) {
-				forecastContainerElements.removeChild(
-					forecastContainerElements.lastChild
-				);
-			}
+		if (weatherForecastBoxElement) {
+			weatherForecastBoxElement.remove();
 		}
 	}
 }
@@ -280,39 +276,48 @@ function renderWeatherForcast(forecast) {
 		"weather-forecast-container"
 	);
 
+	// forcast card
+	let weatherForecastBoxElement = document.querySelector(
+		".weather-forecast-box"
+	);
+	if (weatherForecastBoxElement === null) {
+		weatherForecastBoxElement = document.createElement("div");
+		weatherForecastBoxElement.classList.add("weather-forecast-box");
+	}
+
 	// forcast box
-	const weatherForecastBox = document.createElement("div");
-	weatherForecastBox.classList.add("weather-forecast-box");
+	const weatherForecastCardElement = document.createElement("div");
+	weatherForecastCardElement.classList.add("weather-forecast-card");
 
 	// weather image element
 	const weatherImageElement = document.createElement("img");
 	weatherImageElement.classList.add("weather-forecast-image");
 	weatherImageElement.src = forecast.weatherImage;
-	weatherForecastBox.appendChild(weatherImageElement);
+	weatherForecastCardElement.appendChild(weatherImageElement);
 
 	// weather element
 	const weatherMessageElement = document.createElement("h4");
 	weatherMessageElement.classList.add("weather-forecast");
 	weatherMessageElement.innerHTML = forecast.weather;
-	weatherForecastBox.appendChild(weatherMessageElement);
+	weatherForecastCardElement.appendChild(weatherMessageElement);
 
 	// place element
 	const weatherDateElement = document.createElement("h3");
 	weatherDateElement.classList.add("weather-forecast-date");
 	weatherDateElement.innerHTML = formatDate(forecast.date);
-	weatherForecastBox.appendChild(weatherDateElement);
+	weatherForecastCardElement.appendChild(weatherDateElement);
 
 	if (weatherForecastContaienrElement.lastChild) {
 		// add space
-		weatherForecastBox.classList.add("weather-forecast-box-gap");
+		weatherForecastCardElement.classList.add("weather-forecast-card-gap");
 	}
-	weatherForecastContaienrElement.appendChild(weatherForecastBox);
+
+	weatherForecastBoxElement.appendChild(weatherForecastCardElement);
+	weatherForecastContaienrElement.appendChild(weatherForecastBoxElement);
 }
 
 // handle forcast data
 function parseForcastData(forcastData) {
-	console.log("result 2 ", forcastData);
-
 	if (weather.place === null) {
 		weather.place = `${forcastData.location.name} ${forcastData.location.region}, ${forcastData.location.country}`;
 	}
