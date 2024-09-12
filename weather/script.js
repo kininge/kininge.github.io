@@ -119,7 +119,7 @@ function resetSearchResult(event) {
 
 		// remove all forcast
 		const weatherForecastBoxElement = document.querySelector(
-			"weather-forecast-box"
+			".weather-forecast-box"
 		);
 		if (weatherForecastBoxElement) {
 			weatherForecastBoxElement.remove();
