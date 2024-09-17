@@ -6,6 +6,22 @@ const WEATHER_API_KEY = "d714e54d22d84ecc8c121001241009";
 const BASE_WEATHER_API = "https://api.weatherapi.com";
 const BASE_IP_API = "https://api.ipify.org?format=json";
 
+// master data
+weatherImages = {
+	// handle day and night
+	sunny: "./assets/final/sunny.svg",
+	mist: "./assets/final/mist.svg",
+	"patchy rain nearby": "./assets/final/patchy-rain.svg",
+	"partly cloudy": "./assets/final/partly-cloudy.svg",
+	"light rain": "./assets/final/light-rain.svg",
+	// "moderate rain"
+	// overcast
+	// cloudy
+	// fog
+	// clear
+	// "moderate or heavy rain with thunder"
+};
+
 // dispaly data variables
 var searchedPlace = null;
 var latitudeLongitudeOrIP = null;
@@ -80,7 +96,18 @@ async function networkCall(url = "", method = "GET", header = {}, body = {}) {
 							: response,
 				};
 			} else {
-				return { status: "error", message: JSON.stringify(response) };
+				response = await response.text();
+				response = JSON.parse(response);
+
+				let errorMessage = JSON.stringify(response);
+				if (response.error) {
+					response = response.error;
+				}
+				if (response.hasOwnProperty("message")) {
+					errorMessage = response.message;
+				}
+
+				return { status: "error", message: errorMessage };
 			}
 		} catch (e) {
 			return { status: "error", message: e.message };
@@ -93,7 +120,7 @@ window.addEventListener("load", (event) => {
 	getCurrentPlaceWeatherReport();
 
 	const searchInputBox = document.getElementById("place-search");
-	searchInputBox.addEventListener("keydown", resetSearchResult);
+	searchInputBox.addEventListener("keyup", resetSearchResult);
 	searchInputBox.addEventListener("change", (event) =>
 		handleSeach(event, event.target.value)
 	);
@@ -185,7 +212,7 @@ function getComingDaysWeather(latitudeAndLongitude, days = 1) {
 		if (weatherForcastResponse.status === "success") {
 			resolve(weatherForcastResponse.body);
 		} else {
-			reject(weatherForcastResponse.message);
+			reject(`Oops, we don't collect weather data for ${searchedPlace}!`);
 		}
 	});
 }
@@ -322,7 +349,9 @@ function parseForcastData(forcastData) {
 		weather.place = `${forcastData.location.name} ${forcastData.location.region}, ${forcastData.location.country}`;
 	}
 	weather.weather = forcastData.current.condition.text;
-	weather.weatherImage = "https:" + forcastData.current.condition.icon;
+	weather.weatherImage =
+		weatherImages[weather?.weather?.trim()?.toLowerCase()] ??
+		"https:" + forcastData.current.condition.icon;
 	renderSearchedResult();
 
 	const forecasts = forcastData.forecast.forecastday;
@@ -334,7 +363,10 @@ function parseForcastData(forcastData) {
 		const _forecast = {
 			date: new Date(forecast?.date),
 			weather: forecast?.day?.condition?.text,
-			weatherImage: "https:" + forecast?.day?.condition?.icon,
+			weatherImage:
+				weatherImages[
+					forecast?.day?.condition?.text?.trim()?.toLowerCase()
+				] ?? "https:" + forecast?.day?.condition.icon,
 			hourly: [],
 		};
 
@@ -362,7 +394,7 @@ function handleSeach(event, value) {
 					errorMessage = `Oops, We don't find '${searchedPlace}'!`;
 					renderSearchedResult();
 				} else {
-					place = result.results[0].formatted_address;
+					searchedPlace = result.results[0].formatted_address;
 					const latitude = result.results[0].geometry.location.lat;
 					const longitude = result.results[0].geometry.location.lng;
 					latitudeLongitudeOrIP = `${latitude},${longitude}`;
@@ -372,7 +404,7 @@ function handleSeach(event, value) {
 			})
 			.catch((error) => {
 				if (errorMessage === null) {
-					errorMessage = error.message;
+					errorMessage = error;
 					renderSearchedResult();
 					return error;
 				}
@@ -385,7 +417,7 @@ function handleSeach(event, value) {
 			})
 			.catch((error) => {
 				if (errorMessage === null) {
-					errorMessage = error.message;
+					errorMessage = error;
 					renderSearchedResult();
 					return error;
 				}
