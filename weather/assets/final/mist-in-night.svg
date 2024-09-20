@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+<svg width="800px" height="800px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>mist cloud</title>
+    <defs>
+        <linearGradient id="rain-cloud" x1="0" x2="1" y1="1" y2="0">
+          <stop offset="5%" stop-color="#53789e" />
+          <stop offset="95%" stop-color="#333333" />
+        </linearGradient>
+    </defs>
+    <!-- mist cloud -->
+    <path id="colud" fill="url(#rain-cloud)" transform="translate(42.666667, 106.666667)" d="M256,-1.42108547e-14 C314.910373,-1.42108547e-14 362.666667,47.7562934 362.666667,106.666667 L362.633568,109.350223 C399.447831,118.798865 426.666667,152.220782 426.666667,192 C426.666667,237.700168 390.742006,275.009683 345.592327,277.2289 L341.333333,277.333333 L106.666667,277.333333 L106.675057,276.855764 C46.8683831,271.470602 3.55271368e-14,221.20865 3.55271368e-14,160 C3.55271368e-14,95.1985894 52.5319227,42.6666667 117.333333,42.6666667 C133.98644,42.6666667 149.829242,46.1359909 164.178407,52.3913064 C182.728434,21.0287122 216.908457,-1.42108547e-14 256,-1.42108547e-14 Z"></path>
+</svg>

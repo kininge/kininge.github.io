@@ -4,5 +4,4 @@
     <title>sunny</title>
     <!-- sun -->
     <circle id="sun" cx="385" cy="160" r="125" fill="#FFBC00" stroke="#FFBC00" />
-    <!-- <circle id="sun" cx="250" cy="250" r="125" fill="#FFBC00" stroke="#FFBC00" /> -->
 </svg>

@@ -9,23 +9,48 @@ const BASE_IP_API = "https://api.ipify.org?format=json";
 // master data
 weatherImages = {
 	// handle day and night
-	sunny: "./assets/final/sunny.svg",
-	mist: "./assets/final/mist.svg",
-	"patchy rain nearby": "./assets/final/patchy-rain.svg",
-	"partly cloudy": "./assets/final/partly-cloudy.svg",
-	"light rain": "./assets/final/light-rain.svg",
-	// "moderate rain"
+	sunny: (sunset) =>
+		sunset ? "./assets/final/sunny.svg" : "./assets/final/sunny.svg",
+	mist: (sunset) =>
+		sunset ? "./assets/final/mist-in-night.svg" : "./assets/final/mist.svg",
+	"patchy rain nearby": (sunset) =>
+		sunset
+			? "./assets/final/patchy-rain-in-night.svg"
+			: "./assets/final/patchy-rain.svg",
+	"partly cloudy": (sunset) =>
+		sunset
+			? "./assets/final/partly-cloudy-in-night.svg"
+			: "./assets/final/partly-cloudy.svg",
+	"light rain": (sunset) =>
+		sunset
+			? "./assets/final/light-rain-in-night.svg"
+			: "./assets/final/light-rain.svg",
+	// "moderate or heavy rain with thunder": "./assets/final/moderate-rain.svg",
+	"moderate rain": (sunset) =>
+		sunset
+			? "./assets/final/moderate-rain-in-night.svg"
+			: "./assets/final/moderate-rain.svg",
+	"heavy rain": (sunset) =>
+		sunset
+			? "./assets/final/heavy-rain-in-night.svg"
+			: "./assets/final/heavy-rain.svg",
+	clear: (sunset) =>
+		sunset ? "./assets/final/moon.svg" : "./assets/final/moon.svg",
+	snow: (sunset) =>
+		sunset
+			? "./assets/final/snow-fall-in-night.svg"
+			: "./assets/final/snow-fall.svg",
 	// overcast
 	// cloudy
 	// fog
-	// clear
-	// "moderate or heavy rain with thunder"
 };
 
 // dispaly data variables
 var searchedPlace = null;
 var latitudeLongitudeOrIP = null;
 var errorMessage = null;
+var selectedDayIndex;
+var _weather = [];
 const weather = {
 	place: null,
 	weather: null,
@@ -345,12 +370,30 @@ function renderWeatherForcast(forecast) {
 
 // handle forcast data
 function parseForcastData(forcastData) {
+	resetSearchResult();
+	const today = new Date();
 	if (weather.place === null) {
 		weather.place = `${forcastData.location.name} ${forcastData.location.region}, ${forcastData.location.country}`;
 	}
+	const sunset = [
+		...forcastData.forecast.forecastday[0].astro.sunset
+			.trim()
+			.split(" ")[0]
+			.split(":"),
+		forcastData.forecast.forecastday[0].astro.sunset.trim().split(" ")[1],
+	];
+	const sunsetTime = {
+		hour: Number(sunset[0]) + (sunset[2] === "PM" ? 12 : 0),
+		minutes: Number(sunset[1]),
+	};
+	const isSunset =
+		today.getHours() > sunsetTime.hour ||
+		(today.getHours() === sunsetTime.hour &&
+			today.getMinutes() > sunsetTime.minutes);
+
 	weather.weather = forcastData.current.condition.text;
 	weather.weatherImage =
-		weatherImages[weather?.weather?.trim()?.toLowerCase()] ??
+		weatherImages[weather?.weather?.trim()?.toLowerCase()](isSunset) ??
 		"https:" + forcastData.current.condition.icon;
 	renderSearchedResult();
 
@@ -366,7 +409,7 @@ function parseForcastData(forcastData) {
 			weatherImage:
 				weatherImages[
 					forecast?.day?.condition?.text?.trim()?.toLowerCase()
-				] ?? "https:" + forecast?.day?.condition.icon,
+				](false) ?? "https:" + forecast?.day?.condition.icon,
 			hourly: [],
 		};
 
