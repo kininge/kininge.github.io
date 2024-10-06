@@ -5,8 +5,16 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<script src="script.js"></script>
+
+		<!-- scripts -->
+		<script src="./javascript/index.js" defer></script>
+		<script src="./javascript/data.js" defer></script>
+		<script src="./javascript/network.js" defer></script>
+		<script src="./javascript/dom_manipulation.js" defer></script>
+
+		<!-- styles -->
 		<link rel="stylesheet" href="style.css" />
+
 		<!-- Google font : Suse -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,39 +29,76 @@
 			href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap"
 			rel="stylesheet"
 		/>
-		<title>Weather AAPI</title>
+		<!-- Google font : Josefin Sans -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+			rel="stylesheet"
+		/>
+		<!-- Google font : Montserrat -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+			rel="stylesheet"
+		/>
+
+		<!-- document icon -->
+		<link rel="icon" type="image/x-icon" href="/assets/final/logo.ico" />
+		<!-- document title -->
+		<title>Weather by Pritam Kininge</title>
 	</head>
 	<body>
-		<!-- title -->
-		<h1 class="title-text secondary-text">Weather</h1>
-
-		<!-- search box -->
-		<form
-			id="search-from"
-			onsubmit="handleSeach(event)"
-			class="search-container"
-		>
-			<span class="search-bar-container">
-				<input
-					id="place-search"
-					type="text"
-					class="search-input-box"
-					placeholder="you can search more places here!"
+		<section id="web-page">
+			<!-- search section -->
+			<section id="search-section">
+				<!-- <h1 class="logo">weather</h1> -->
+				<img
+					class="logo"
+					src="./assets/final/word-logo.svg"
+					alt="logo"
 				/>
-				<button type="submit" class="search-submit-button">
-					<img
-						src="./assets/search.svg"
-						class="search-image"
-						alt="search-image"
-					/>
-				</button>
-			</span>
-		</form>
+				<div id="search-container">
+					<!-- search -->
+					<search id="search-box">
+						<div class="search-option-container">
+							<img
+								src="./assets/final/search.svg"
+								alt="search"
+								class="search-image"
+							/>
+						</div>
 
-		<!-- resopnse -->
-		<section id="response-container"></section>
+						<form
+							onsubmit="toSearch(event)"
+							class="search-input-form"
+						>
+							<input
+								id="search-input-box"
+								autocomplete="off"
+								type="text"
+							/>
+						</form>
 
-		<!-- weather forcast -->
-		<section id="weather-forecast-container"></section>
+						<button
+							id="clear-search-button"
+							class="search-option-container"
+						>
+							<img
+								src="./assets/final/cross.svg"
+								alt="search"
+								class="clear-image"
+							/>
+						</button>
+					</search>
+					<!-- autocomplete -->
+					<div id="autocomplete-box"></div>
+				</div>
+			</section>
+
+			<!-- resopnse section -->
+			<section id="response-section"></section>
+		</section>
 	</body>
 </html>
