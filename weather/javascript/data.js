@@ -3370,6 +3370,7 @@ function removePlaceFromRecentSearch(place) {
 }
 function updateRecentSearch(place) {
 	const recentSearchedList = getRecentSearch();
+	recentSearchedList.sort((a, b) => b.time - a.time); // sort based on time - recent on top
 
 	let doesPlaceAlreadyExist = false;
 	for (let i = 0; i < recentSearchedList.length; i++) {
@@ -3406,6 +3407,8 @@ function setTries(newTriesForSearch) {
 	);
 }
 function addOrReturnNode(parentNode, index, node) {
+	console.log(index, parentNode, node);
+
 	if (index >= 0 && index < 27 && parentNode.charectors[index] === null) {
 		parentNode.charectors[index] = node;
 	} else if (node.data && parentNode.charectors[index].data === null) {

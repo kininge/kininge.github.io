@@ -94,6 +94,7 @@ function onSearchedTextChange(event) {
 function toSearch(event) {
 	event.preventDefault();
 	if (searchInputElement.value.length > 0) {
+		clearSearchAndResponseData();
 		searchedParamerter.place = searchInputElement.value;
 		searchWeatherForecastPromise();
 	}
@@ -722,6 +723,7 @@ function animateResponseExitPromise() {
 	return new Promise((resolve, reject) => {
 		function onAnimationDone() {
 			if (responseContainerElement) {
+				clearResponseData(); // clear all old data
 				responseContainerElement.remove(); // remove element
 				responseContainerElement = null;
 			}

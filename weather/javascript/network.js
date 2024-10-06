@@ -46,7 +46,9 @@ function updateSearchParameter(place) {
 function clearResponseData() {
 	loading = false;
 	activeWeatherIndex = 0;
+	activeHourIndex = 0;
 	wetherData = [];
+	hourlyForecast = [];
 	errorMessage = null;
 }
 // clear search and response data
