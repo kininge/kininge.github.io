@@ -188,7 +188,7 @@ function showSuggestions(resentSearchedList) {
 			addClass(suggestionIconContainer, "suggestion-list-icon-container");
 			const suggestionIcon = createElement("img");
 			addClass(suggestionIcon, "suggestion-icon");
-			setAttribute(suggestionIcon, "src", "./assets/final/clock.svg");
+			setAttribute(suggestionIcon, "src", "./assets/clock.svg");
 			setAttribute(suggestionIcon, "alt", "suggestion");
 			addElement(suggestionIconContainer, suggestionIcon);
 			addElement(suggestionElement, suggestionIconContainer);
@@ -204,11 +204,7 @@ function showSuggestions(resentSearchedList) {
 			addClass(suggestionDeleleButton, "suggestion-remove-button");
 			const suggestionDeleteIcon = createElement("img");
 			addClass(suggestionDeleteIcon, "suggestion-remove-button-icon");
-			setAttribute(
-				suggestionDeleteIcon,
-				"src",
-				"./assets/final/cross.svg"
-			);
+			setAttribute(suggestionDeleteIcon, "src", "./assets/cross.svg");
 			setAttribute(suggestionDeleteIcon, "alt", "remove suggestion");
 			addElement(suggestionDeleleButton, suggestionDeleteIcon);
 			addElement(suggestionElement, suggestionDeleleButton);
@@ -393,7 +389,7 @@ function displayPredictions(callback) {
 		_hourWeatherData?.chance_of_rain > 0
 			? `${_hourWeatherData?.precip_mm} mm`
 			: null,
-		{ icon: "./assets/final/rain.svg", alt: "rain icon" }
+		{ icon: "./assets/rain.svg", alt: "rain icon" }
 	);
 	addElement(_base.container, rainPredictionBoxElement);
 	// snow prediction
@@ -401,7 +397,7 @@ function displayPredictions(callback) {
 		"Snow",
 		`${_hourWeatherData?.chance_of_snow}% chance of snow`,
 		null,
-		{ icon: "./assets/final/snow.svg", alt: "snow icon" }
+		{ icon: "./assets/snow.svg", alt: "snow icon" }
 	);
 	addElement(_base.container, snowPredictionBoxElement);
 
@@ -422,7 +418,7 @@ function displayCurrentData(callback) {
 		"Temprature",
 		`${_hourWeatherData?.temp_c} &deg;C`,
 		null,
-		{ icon: "./assets/final/temp.svg", alt: "temprature icon" }
+		{ icon: "./assets/temp.svg", alt: "temprature icon" }
 	);
 	addElement(_base.container, tempratureBoxElement);
 
@@ -431,7 +427,7 @@ function displayCurrentData(callback) {
 		"Humidity",
 		`${_hourWeatherData?.humidity}%`,
 		null,
-		{ icon: "./assets/final/humidity.svg", alt: "humidity icon" }
+		{ icon: "./assets/humidity.svg", alt: "humidity icon" }
 	);
 	addElement(_base.container, humidityBoxElement);
 
@@ -440,7 +436,7 @@ function displayCurrentData(callback) {
 		"Wind",
 		`${_hourWeatherData?.wind_degree}&deg; to ${_hourWeatherData?.wind_dir}`,
 		`${_hourWeatherData?.wind_kph} km/h`,
-		{ icon: "./assets/final/wind.svg", alt: "wind icon" }
+		{ icon: "./assets/wind.svg", alt: "wind icon" }
 	);
 	addElement(_base.container, windBoxElement);
 
@@ -450,7 +446,7 @@ function displayCurrentData(callback) {
 		`${_hourWeatherData?.uv} nm`,
 		null,
 		{
-			icon: "./assets/final/uv.svg",
+			icon: "./assets/uv.svg",
 			alt: "UV icon",
 		}
 	);

@@ -155,29 +155,29 @@ const WEATHER_IMAGES = {
 	// cloudy
 	// fog
 	DAY_TIME: {
-		clear: "./assets/final/moon.svg", // beacuse time zone issue not solved yet
-		sunny: "./assets/final/sunny.svg",
-		mist: "./assets/final/mist.svg",
-		"patchy rain nearby": "./assets/final/patchy-rain.svg",
-		"partly cloudy": "./assets/final/partly-cloudy.svg",
-		"light rain": "./assets/final/light-rain.svg",
-		"moderate rain": "./assets/final/moderate-rain.svg",
-		"heavy rain": "./assets/final/heavy-rain.svg",
-		snow: "./assets/final/snow-fall.svg",
+		clear: "./assets/moon.svg", // beacuse time zone issue not solved yet
+		sunny: "./assets/sunny.svg",
+		mist: "./assets/mist.svg",
+		"patchy rain nearby": "./assets/patchy-rain.svg",
+		"partly cloudy": "./assets/partly-cloudy.svg",
+		"light rain": "./assets/light-rain.svg",
+		"moderate rain": "./assets/moderate-rain.svg",
+		"heavy rain": "./assets/heavy-rain.svg",
+		snow: "./assets/snow-fall.svg",
 	},
 	NIHGT_TIME: {
-		sunny: "./assets/final/sunny.svg", // beacuse time zone issue not solved yet
-		clear: "./assets/final/moon.svg",
-		mist: "./assets/final/mist-in-night.svg",
-		"patchy rain nearby": "./assets/final/patchy-rain-in-night.svg",
-		"partly cloudy": "./assets/final/partly-cloudy-in-night.svg",
-		"light rain": "./assets/final/light-rain-in-night.svg",
-		"moderate rain": "./assets/final/moderate-rain-in-night.svg",
-		"heavy rain": "./assets/final/heavy-rain-in-night.svg",
-		snow: "./assets/final/snow-fall-in-night.svg",
+		sunny: "./assets/sunny.svg", // beacuse time zone issue not solved yet
+		clear: "./assets/moon.svg",
+		mist: "./assets/mist-in-night.svg",
+		"patchy rain nearby": "./assets/patchy-rain-in-night.svg",
+		"partly cloudy": "./assets/partly-cloudy-in-night.svg",
+		"light rain": "./assets/light-rain-in-night.svg",
+		"moderate rain": "./assets/moderate-rain-in-night.svg",
+		"heavy rain": "./assets/heavy-rain-in-night.svg",
+		snow: "./assets/snow-fall-in-night.svg",
 	},
 	OTHER: {
-		LOADER_ANIMATION: "./assets/final/animation_wind.gif",
+		LOADER_ANIMATION: "./assets/animation_wind.gif",
 	},
 };
 const ADDRESS = {
@@ -3407,8 +3407,6 @@ function setTries(newTriesForSearch) {
 	);
 }
 function addOrReturnNode(parentNode, index, node) {
-	console.log(index, parentNode, node);
-
 	if (index >= 0 && index < 27 && parentNode.charectors[index] === null) {
 		parentNode.charectors[index] = node;
 	} else if (node.data && parentNode.charectors[index].data === null) {
