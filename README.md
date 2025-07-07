@@ -2,6 +2,7 @@
 
 **Senior Software Developer**
 
+> _Superhero with single superpower, 'consistency'._
 ---
 
 ### 🚀 Tech Stack
@@ -23,5 +24,4 @@
 ---
 
 > _A software developer's fundamental `Dharma` is to Create Something. So, create something._  
-> _Superhero with single superpower, 'consistency'._
 
