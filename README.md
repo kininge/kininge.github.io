@@ -13,11 +13,11 @@
 - **Databases:** ![MySQL](https://img.shields.io/badge/MySQL-gray?logo=mysql), ![MongoDB](https://img.shields.io/badge/MongoDB-gray?logo=mongodb), ![Postgress](https://img.shields.io/badge/Postgress-gray?logo=postgress), ![MSSQL](https://img.shields.io/badge/MSSQL-gray?logo=mssql)
 
 ### 🛠️ Projects
-- ![**DevWrite**](https://github.com/kininge/devwrite) ![In Progress](https://img.shields.io/badge/In_Progress-yellow?logo=progress)
+- [**DevWrite**](https://github.com/kininge/devwrite) ![In Progress](https://img.shields.io/badge/In_Progress-yellow?logo=progress)   
   ![React.js](https://img.shields.io/badge/React.js-gray?logo=react), ![TypeScript](https://img.shields.io/badge/TypeScript-gray?logo=typescript), ![Express.js](https://img.shields.io/badge/Express.js-gray?logo=express), ![SuperBase](https://img.shields.io/badge/SuperBase-gray?logo=superbase), ![Postgress](https://img.shields.io/badge/Postgress-gray?logo=postgress)
-- ![**Swapi App**](https://github.com/kininge/swapi-app)
+- [**Swapi App**](https://github.com/kininge/swapi-app)   
   ![React.js](https://img.shields.io/badge/React.js-gray?logo=react), ![TypeScript](https://img.shields.io/badge/TypeScript-gray?logo=typescript)
-- ![**Leetcode Daily**](https://github.com/kininge/leetcode-daily)
+- [**Leetcode Daily**](https://github.com/kininge/leetcode-daily)   
   ![DSA](https://img.shields.io/badge/DSA-gray?logo=dsa)
 
 ---
