@@ -6,7 +6,7 @@
 ---
 
 ### 🚀 Tech Stack
-- **Languages:** ![JavaScript](https://img.shields.io/badge/language-TypeScript-007ACC?logo=typescript), ![TypeScript](https://img.shields.io/badge/language-TypeScript-007ACC?logo=typescript), ![Dart](https://img.shields.io/badge/language-Dart-007ACC?logo=dart), ![Python](https://img.shields.io/badge/language-Python-007ACC?logo=python)`
+- **Languages:** ![JavaScript](https://img.shields.io/badge/JavaScript-F0DB4F?logo=javascript), ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript), ![Dart](https://img.shields.io/badge/Dart-0075BA?logo=dart), ![Python](https://img.shields.io/badge/language-Python-4B8BBE?logo=python)`
 - **Important Skills:** `DSA`, `LLD`, `HLD`
 - **Frontend:** React.js, Next.js, Flutter
 - **Backend:** Express.js
