@@ -6,11 +6,11 @@
 ---
 
 ### 🚀 Tech Stack
-- **Languages:** JavaScript, TypeScript, Dart, Python
-- **Important Skills:** DSA, HLD
+- **Languages:** `JavaScript`, `TypeScript`, `Dart`, `Python`
+- **Important Skills:** `DSA`, `LLD`, `HLD`
 - **Frontend:** React.js, Next.js, Flutter
 - **Backend:** Express.js
-- **Databases:** MySQL, MongoDB
+- **Databases:** MySQL, MongoDB, 
 
 ### 🛠️ Projects
 - **DevWrite** (Inprogress)
@@ -18,8 +18,8 @@
 
 
 ### 🌐 Profiles
-- [LinkedIn](https://www.linkedin.com/in/pritam-kininge/)
-- [LeetCode](https://leetcode.com/u/kininge007/)
+
+[LinkedIn](https://linkedin.com/in/pritam-kininge)  |  [GitHub](https://github.com/kininge)  |  [Leetcode](https://leetcode.com/u/kininge007/)
 
 ---
 
